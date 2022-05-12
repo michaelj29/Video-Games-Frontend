@@ -1,9 +1,11 @@
-
+import VideoGameChart from "./Components/VideoGameChart";
+import Header from "./Components/Header";
 
 function App() {
   return (
-    <div >
-
+    <div>
+      <Header />
+      <VideoGameChart />
     </div>
   );
 }
