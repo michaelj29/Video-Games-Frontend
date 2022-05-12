@@ -1,13 +1,42 @@
-import React from "react";
+import {React, useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
-const VideoGameChart = props => {
+import axios from "axios";
+
+const VideoGameChart = (props) => {
+
+
+const [videoGames, setVideoGames] = useState([])
+const [chartData, setChartData] = useState([])
+
+useEffect(() => {
+  getAllVideoGames();
+});
+
+useEffect(() => {
+  let tempChartData = videoGames.map(entry => {
+      return [entry.year]
+  });
+  setChartData(tempChartData);
+}, [0])
+
+
+  async function getAllVideoGames(){
+    try {
+      let response = await axios.get('https://localhost:7260/api/games/1/');
+      console.log(response.data)
+      setVideoGames(response.data)
+    } catch (err) {
+      console.log('Error in getAllVideoGames function.')
+    }
+  }
+
   return (
     <div>
       <Chart
         chartType="LineChart"
         width="100%"
         height="400px"
-        // data={data}
+        data={[...chartData]}
         // options={options}
       />
     </div>
