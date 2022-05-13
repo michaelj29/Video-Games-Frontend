@@ -1,61 +1,42 @@
-import {React, useEffect, useState } from "react";
+import { React, useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import axios from "axios";
+import DisplayGames from "./DisplayGames";
 
-const VideoGameChart = (props) => {
+const VideoGameChart = props => {
+  const [videoGames, setVideoGames] = useState([]);
+  // const [chartData, setChartData] = useState([]);
+  // const [chartData, setChartData] = useState([]);
 
-
-const [videoGames, setVideoGames] = useState([])
-const [chartData, setChartData] = useState([])
-
-useEffect(() => {
-  getAllVideoGames();
-});
-
-useEffect(() => {
-  let tempChartData = videoGames.map(entry => {
-      return [entry.year]
-  });
-  setChartData(tempChartData);
-}, [0])
-
-
-  async function getAllVideoGames(){
-    try {
-      let response = await axios.get('https://localhost:7260/api/games/1/');
-      console.log(response.data)
-      setVideoGames(response.data)
-    } catch (err) {
-      console.log('Error in getAllVideoGames function.')
-    }
-  }
-
+  const data = [
+    ["Style", "Colonial", "Victorian", "Modern", "Contemporary"],
+    ["2013", 5.2, 3.6, 2.8, 2],
+    ["2014", 5.6, 4.0, 2.8, 3],
+    ["2015", 7.2, 2.2, 2.2, 6.0],
+    ["2016", 8.0, 1.7, 0.8, 4.0],
+  ];
+  const options = {
+    isStacked: "relative",
+    height: 300,
+    legend: { position: "top", maxLines: 3 },
+    vAxis: {
+      minValue: 0,
+      // ticks: [0, 0.3, 0.6, 0.9, 1],
+    },
+  };
   return (
-    <div>
+    <>
       <Chart
-        chartType="LineChart"
-        width="100%"
+        chartType="SteppedAreaChart"
+        width="80%"
         height="400px"
-        data={[...chartData]}
-        // options={options}
+        data={data}
+        options={options}
+        legendToggle
       />
-    </div>
+      <DisplayGames />;
+    </>
   );
 };
 
 export default VideoGameChart;
-
-{
-  /* export const data = [
-    ["Year", "Sales", "Expenses"],
-    ["2004", 1000, 400],
-    ["2005", 1170, 460],
-    ["2006", 660, 1120],
-    ["2007", 1030, 540],
-  ];
-    export const options = {
-        title: "Company Performance",
-        curveType: "function",
-        legend: { position: "bottom" },
-      }; */
-}
