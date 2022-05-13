@@ -13,14 +13,21 @@ const VideoGameChart = ({ videoGames }) => {
     let distinctPlatforms = [...new Set(platforms)];
     // console.log("Distinct Platforms", distinctPlatforms);
     let platformArrays = distinctPlatforms.map(platform => {
-      console.log("2nd platform array", allGamesPlatform);
-      console.log("hope!!", distinctGlobalSales);
-      return [platform, allGamesPlatform, "silver"];
+      let allGamesForPlatform = filteredGames.filter(game => game.platform === platform)
+      for(let i = 0; i < allGamesForPlatform.length; i++)
+
+      console.log("2nd platform array", allGamesForPlatform.length);
+      // console.log("hope!!", distinctGlobalSales);
+      return [platform, allGamesForPlatform.length, "red"];
     });
+
+    
+
+
     // console.log("platform array", platformArrays);
     const data = [
       ["Platform", "Sales", { role: "style" }],
-      ...platformArrays,
+      ...platformArrays, 
       // ["Playstation", 8.94, "red"], // RGB value
       // ["Silver", 10.49, "red"], // English color name
       // ["Gold", 19.3, "red"],

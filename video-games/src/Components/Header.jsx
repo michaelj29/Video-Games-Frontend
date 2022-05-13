@@ -20,7 +20,7 @@ const Header = props => {
             Disabled Link
           </NavLink>
         </NavItem>
-        <SearchBar />
+        <SearchBar search = {props.search} />
       </Nav>
     </div>
   );
