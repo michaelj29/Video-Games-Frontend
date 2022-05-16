@@ -1,6 +1,6 @@
 import React from "react";
 function DisplayGames(props) {
-  const displayGameData = () => {};
+
   return (
     <div>
       {props.games.map(element => {

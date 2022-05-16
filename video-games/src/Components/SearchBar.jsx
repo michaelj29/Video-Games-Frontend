@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Button, Form, FormControl } from "react-bootstrap";
 
-const SearchBar = props => {
+const SearchBar = (props) => {
   const [search, setSearch] = useState("");
 
-  // function handleSubmit(event){
-  //     event.preventDefault();
-  //     props.search(search)
-  // }
+   function handleSubmit(event){
+       event.preventDefault();
+       console.log(props.search)
+       //console.log('Here is the event ' + event)
+       props.search(search);
+   };
 
   function onChange(e) {
     let newValue = e.target.value;
@@ -17,7 +19,7 @@ const SearchBar = props => {
 
   return (
     <div>
-      <Form className="d-flex">
+      <Form className="d-flex" onSubmit={handleSubmit}>
         <FormControl
           type="search"
           placeholder="Search any topic"
@@ -26,8 +28,7 @@ const SearchBar = props => {
           onChange={onChange}
           value={search}
         />
-
-        {/* <Button type="submit" variant="outline-success">Search</Button> */}
+        <Button type="submit" variant="outline-success">Search</Button>
       </Form>
     </div>
   );
