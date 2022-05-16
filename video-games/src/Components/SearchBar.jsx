@@ -6,8 +6,6 @@ const SearchBar = (props) => {
 
    function handleSubmit(event){
        event.preventDefault();
-       console.log(props.search)
-       //console.log('Here is the event ' + event)
        props.search(search);
    };
 

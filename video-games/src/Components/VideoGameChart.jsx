@@ -11,16 +11,22 @@ const VideoGameChart = ({ videoGames }) => {
     });
     // console.log(platforms, "platforms");
     let distinctPlatforms = [...new Set(platforms)];
-    // console.log("Distinct Platforms", distinctPlatforms);
+    //console.log("Distinct Platforms", distinctPlatforms);
+    let sum = 0;
     let platformArrays = distinctPlatforms.map(platform => {
       let allGamesForPlatform = filteredGames.filter(
         game => game.platform === platform
       );
-      for (let i = 0; i < allGamesForPlatform.length; i++)
-        // console.log("2nd platform array", allGamesForPlatform);
-        // console.log("hope!!", distinctGlobalSales);
-        return [platform, allGamesForPlatform.length, "red"];
-    });
+      for (let i = 0; i < allGamesForPlatform.length; i++){
+        //NEED GLOBAL SALES FOR EACH PLATFORM 
+        //THE LOGIC NEEDS TO BE COMPLETED 
+        if(allGamesForPlatform[i].platform === allGamesForPlatform[i + 1].platform){
+          console.log(allGamesForPlatform[i].globalSales + " " + allGamesForPlatform[i] + " " + allGamesForPlatform[i].platform)
+          sum += allGamesForPlatform[i].globalSales;
+      }
+
+        return [platform, sum, "red"];
+    }});
 
     // console.log("platform array", platformArrays);
     const data = [
