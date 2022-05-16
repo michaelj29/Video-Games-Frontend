@@ -2,8 +2,7 @@ import VideoGameChart from "./Components/VideoGameChart";
 import Header from "./Components/Header";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import SearchBar from "./Components/SearchBar";
-import DisplayGames from "./Components/DisplayGames";
+
 import DisplayGameSearch  from "./Components/DisplayGameSearch";
 
 
@@ -27,7 +26,7 @@ function App() {
   }
 
   function searchVideoGames(searchInput) {
-    let results = videoGames.filter(game => game.name.toLowerCase() === searchInput.toLowerCase());
+    let results = videoGames.filter(game => game.name.toLowerCase().includes(searchInput.toLowerCase()));
     setGameSearch(results);
   }
 
@@ -36,7 +35,7 @@ function App() {
       <Header search={searchVideoGames}/>
       <DisplayGameSearch gameSearch={gameSearch}/>
       <VideoGameChart videoGames={videoGames} />
-      <DisplayGames games={videoGames} />
+      {/* <DisplayGames games={videoGames} /> */}
     </div>
   );
 }
