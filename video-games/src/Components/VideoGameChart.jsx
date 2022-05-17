@@ -2,6 +2,8 @@ import { React } from "react";
 import { Chart } from "react-google-charts";
 
 const VideoGameChart = ({ videoGames }) => {
+
+
   function generateDateFormChart() {
     // console.log("These Video Games", videoGames);
     let filteredGames = videoGames.filter(game => game.year >= 2013);
@@ -12,21 +14,20 @@ const VideoGameChart = ({ videoGames }) => {
     // console.log(platforms, "platforms");
     let distinctPlatforms = [...new Set(platforms)];
     //console.log("Distinct Platforms", distinctPlatforms);
-    let sum = 0;
     let platformArrays = distinctPlatforms.map(platform => {
+      let sum = 0;
       let allGamesForPlatform = filteredGames.filter(
         game => game.platform === platform
       );
       for (let i = 0; i < allGamesForPlatform.length; i++){
         //NEED GLOBAL SALES FOR EACH PLATFORM 
         //THE LOGIC NEEDS TO BE COMPLETED 
-        if(allGamesForPlatform[i].platform === allGamesForPlatform[i + 1].platform){
-          console.log(allGamesForPlatform[i].globalSales + " " + allGamesForPlatform[i] + " " + allGamesForPlatform[i].platform)
+        //console.log(allGamesForPlatform[i].globalSales + " " + allGamesForPlatform[i] + " " + allGamesForPlatform[i].platform)
+        console.log(allGamesForPlatform[i].globalSales)
           sum += allGamesForPlatform[i].globalSales;
-      }
-
+        }
         return [platform, sum, "red"];
-    }});
+  });
 
     // console.log("platform array", platformArrays);
     const data = [
