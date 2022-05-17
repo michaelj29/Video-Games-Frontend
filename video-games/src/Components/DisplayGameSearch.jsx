@@ -30,7 +30,7 @@ const DisplayGameSearch = props => {
     });
 
     const data = [
-      ["Platform", "Number of copies", { role: "style" }],
+      ["Platform", "Number of copies Sold Per Million", { role: "style" }],
       ...platformArrays,
     ];
     props.setToggle(true);
