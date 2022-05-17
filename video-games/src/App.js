@@ -42,7 +42,7 @@ function App() {
       {toggle ? (
         <>
           <div className="title">
-            <h4>Game Copies Sold 2013 - Present</h4>
+            <h4>Game Data</h4>
           </div>
           <Chart
             chartType="ColumnChart"
