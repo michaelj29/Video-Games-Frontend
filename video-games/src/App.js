@@ -4,12 +4,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EvaluationChart from "./Components/EvaluationChart";
 import "./App.css";
-
 import DisplayGameSearch from "./Components/DisplayGameSearch";
+import { Chart } from "react-google-charts";
 
 function App() {
   const [videoGames, setVideoGames] = useState([]);
   const [gameSearch, setGameSearch] = useState([]);
+  const [chartData, setChartData] = useState([]);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     getAllVideoGames();
@@ -35,13 +37,24 @@ function App() {
   return (
     <div>
       <Header search={searchVideoGames} />
-      <div className="search-container">
-        <DisplayGameSearch gameSearch={gameSearch} />
-      </div>
       <EvaluationChart videoGames={videoGames} />
       <VideoGameChart videoGames={videoGames} />
-      {/* <DisplayGames games={videoGames} /> */}
-    </div>
+      {toggle ? (
+        <>
+          <Chart
+            chartType="ColumnChart"
+            width="100%"
+            height="400px"
+            data={chartData}
+            />
+        </>
+      ) : (
+        <p></p>
+        )}
+      <div className="search-container">
+        <DisplayGameSearch setToggle={setToggle} setChartData={setChartData} gameSearch={gameSearch} />
+      </div>
+        </div>
   );
 }
 

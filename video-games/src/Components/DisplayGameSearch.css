@@ -3,7 +3,6 @@
     margin: 1em;
     align-items: stretch;
     max-width: 200px;
-    /* overflow: auto; */
     max-height: 500px;
 }
 .search-results{

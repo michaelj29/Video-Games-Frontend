@@ -31,6 +31,7 @@ const EvaluationChart = ({videoGames}) => {
 
     return ( 
         <>
+        <h2 style={{'margin-left': '20%'}}>European game copies sold for each console 2000-2005</h2>
         <Chart
           chartType="ColumnChart"
           width="100%"

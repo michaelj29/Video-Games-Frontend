@@ -4,11 +4,10 @@ import { Chart } from "react-google-charts";
 import "./DisplayGameSearch.css";
 
 const DisplayGameSearch = props => {
-  const [toggle, setToggle] = useState(false);
-  const [chartData, setChartData] = useState([]);
+
 
   function displayGameData(selectedGame) {
-    // console.log(selectedGame);
+
     let newSelectedGame = props.gameSearch.filter(
       game => game.name.toLowerCase() === selectedGame.name.toLowerCase()
     );
@@ -22,7 +21,6 @@ const DisplayGameSearch = props => {
       let allGamesForPlatform = newSelectedGame.filter(
         game => game.platform === platform
       );
-      // console.log(allGamesForPlatform)
 
       for (let i = 0; i < allGamesForPlatform.length; i++) {
         sum = 0;
@@ -35,9 +33,8 @@ const DisplayGameSearch = props => {
       ["Platform", "Number of copies", { role: "style" }],
       ...platformArrays,
     ];
-    // console.log(data);
-    setToggle(true);
-    setChartData(data);
+    props.setToggle(true);
+    props.setChartData(data)
     return data;
   }
 
@@ -69,18 +66,6 @@ const DisplayGameSearch = props => {
           </div>
         );
       })}
-      {toggle ? (
-        <>
-          <Chart
-            chartType="ColumnChart"
-            width="100%"
-            height="400px"
-            data={chartData}
-          />
-        </>
-      ) : (
-        <p>Search game for results</p>
-      )}
     </div>
   );
 };

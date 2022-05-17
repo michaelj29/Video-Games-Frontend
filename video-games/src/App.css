@@ -1,4 +1,4 @@
 .search-container{
-overflow: scroll;
+overflow: auto;
 height: 300px;
 }
