@@ -20,13 +20,13 @@ const SearchBar = (props) => {
       <Form className="d-flex" onSubmit={handleSubmit}>
         <FormControl
           type="search"
-          placeholder="Search any topic"
+          placeholder="Search any videogame"
           className="me-2"
           aria-label="Search"
           onChange={onChange}
           value={search}
         />
-        <Button type="submit" variant="outline-success">Search</Button>
+        <Button size="sm" type="submit" variant="outline-primary">Search</Button>
       </Form>
     </div>
   );

@@ -37,10 +37,13 @@ function App() {
   return (
     <div>
       <Header search={searchVideoGames} />
-      <EvaluationChart videoGames={videoGames} />
       <VideoGameChart videoGames={videoGames} />
+      <EvaluationChart videoGames={videoGames} />
       {toggle ? (
         <>
+          <div className="title">
+            <h4>Game Copies Sold 2013 - Present</h4>
+          </div>
           <Chart
             chartType="ColumnChart"
             width="100%"

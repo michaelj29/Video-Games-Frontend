@@ -14,3 +14,11 @@ span {
     color:#669BBC;
     margin-left: 0px;
 }
+
+.title h4{
+    text-align: center;
+    text-shadow: .5px .5px .5px red, 0 0 1em rgba(0, 0, 0, 0.318), 0 0 0.1em blue;
+}
+.header{
+    margin-left:20px;
+}

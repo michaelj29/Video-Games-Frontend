@@ -1,5 +1,6 @@
 import { React } from "react";
 import { Chart } from "react-google-charts";
+import "./Header.css"
 
 const VideoGameChart = ({ videoGames }) => {
 
@@ -32,7 +33,9 @@ const VideoGameChart = ({ videoGames }) => {
 
   return (
     <>
-    <h2 style={{'margin-left': '20%'}}>Game copies sold for each console 2013 - Present</h2>
+    <div className="title">
+    <h4>Game Copies Sold for Each Console 2013 - Present</h4>
+    </div>
       <Chart
         chartType="ColumnChart"
         width="100%"
