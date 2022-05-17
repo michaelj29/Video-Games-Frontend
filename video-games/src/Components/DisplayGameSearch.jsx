@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { CardBody, CardTitle, Button } from "reactstrap";
+import { CardBody, CardTitle, Button, CardSubtitle } from "reactstrap";
 import { Chart } from "react-google-charts";
 
 const DisplayGameSearch = props => {
@@ -49,7 +49,8 @@ const DisplayGameSearch = props => {
           <>
             <CardBody>
               <CardTitle tag="h5">{game.name}</CardTitle>
-              <Button
+              <CardSubtitle className="mb-2 text-muted" tag="h6">Rank: {game.rank}, Genre: {game.genre}, Year: {game.year}, Publisher: {game.publisher} </CardSubtitle>
+              <Button color="primary" size ="sm"
                 onClick={() => {
                   displayGameData(game);
                 }}
@@ -66,12 +67,7 @@ const DisplayGameSearch = props => {
               <li>{game.japanSales}</li>
               <li>{game.otherSales}</li>
               <li>{game.globalSales}</li> */}
-              {/* <Chart
-                chartType="ColumnChart"
-                width="100%"
-                height="400px"
-                data={displayGameData()}
-              /> */}
+
             </CardBody>
           </>
         );
