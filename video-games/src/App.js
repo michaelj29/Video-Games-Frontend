@@ -3,10 +3,9 @@ import Header from "./Components/Header";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import EvaluationChart from "./Components/EvaluationChart";
+import "./App.css";
 
-import DisplayGameSearch  from "./Components/DisplayGameSearch";
-
-
+import DisplayGameSearch from "./Components/DisplayGameSearch";
 
 function App() {
   const [videoGames, setVideoGames] = useState([]);
@@ -27,15 +26,19 @@ function App() {
   }
 
   function searchVideoGames(searchInput) {
-    let results = videoGames.filter(game => game.name.toLowerCase().includes(searchInput.toLowerCase()));
+    let results = videoGames.filter(game =>
+      game.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
     setGameSearch(results);
   }
 
   return (
     <div>
-      <Header search={searchVideoGames}/>
-      <EvaluationChart videoGames={videoGames}/>
-      <DisplayGameSearch gameSearch={gameSearch}/>
+      <Header search={searchVideoGames} />
+      <div className="search-container">
+        <DisplayGameSearch gameSearch={gameSearch} />
+      </div>
+      <EvaluationChart videoGames={videoGames} />
       <VideoGameChart videoGames={videoGames} />
       {/* <DisplayGames games={videoGames} /> */}
     </div>

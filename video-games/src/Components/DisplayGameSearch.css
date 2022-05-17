@@ -1,0 +1,22 @@
+.game-card{
+    display: flex;
+    margin: 1em;
+    align-items: stretch;
+    max-width: 200px;
+    /* overflow: auto; */
+    max-height: 500px;
+}
+.search-results{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+.game-title{
+    font-size: small;
+    display: flex;
+    
+}
+.game-subtitle{
+    font-size: small
+}

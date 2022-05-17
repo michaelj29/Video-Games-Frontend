@@ -1,12 +1,11 @@
-import React, {useState} from "react";
-import { CardBody, CardTitle, Button, CardSubtitle } from "reactstrap";
+import React, { useState } from "react";
+import { Card, CardTitle, Button, CardSubtitle } from "reactstrap";
 import { Chart } from "react-google-charts";
+import "./DisplayGameSearch.css";
 
 const DisplayGameSearch = props => {
-    const[toggle,setToggle]=useState(false)
-    const [chartData, setChartData] =useState([])
-
-
+  const [toggle, setToggle] = useState(false);
+  const [chartData, setChartData] = useState([]);
 
   function displayGameData(selectedGame) {
     // console.log(selectedGame);
@@ -16,7 +15,7 @@ const DisplayGameSearch = props => {
     let platforms = newSelectedGame.map(game => {
       return game.platform;
     });
-    
+
     let distinctPlatforms = [...new Set(platforms)];
     let sum = 0;
     let platformArrays = distinctPlatforms.map(platform => {
@@ -24,12 +23,12 @@ const DisplayGameSearch = props => {
         game => game.platform === platform
       );
       // console.log(allGamesForPlatform)
-      
-      for (let i = 0; i < allGamesForPlatform.length; i++){
-          sum = 0;
-          sum += allGamesForPlatform[i].globalSales;
+
+      for (let i = 0; i < allGamesForPlatform.length; i++) {
+        sum = 0;
+        sum += allGamesForPlatform[i].globalSales;
       }
-        return [platform, sum, "green"];
+      return [platform, sum, "green"];
     });
 
     const data = [
@@ -37,50 +36,51 @@ const DisplayGameSearch = props => {
       ...platformArrays,
     ];
     // console.log(data);
-    setToggle(true)
-    setChartData(data)
+    setToggle(true);
+    setChartData(data);
     return data;
   }
 
   return (
-    <div>
+    <div className="search-results">
       {props.gameSearch.map(game => {
         return (
-          <>
-            <CardBody>
-              <CardTitle tag="h5">{game.name}</CardTitle>
-              <CardSubtitle className="mb-2 text-muted" tag="h6">Rank: {game.rank}, Genre: {game.genre}, Year: {game.year}, Publisher: {game.publisher} </CardSubtitle>
-              <Button color="primary" size ="sm"
+          <div>
+            <Card className="game-card">
+              <CardTitle className="game-title" tag="h6">
+                {game.name}
+              </CardTitle>
+              <CardSubtitle className="text-muted game-subtitle" tag="h6">
+                Rank: {game.rank}, Genre: {game.genre}
+              </CardSubtitle>
+              <CardSubtitle className="text-muted game-subtitle" tag="h6">
+                Year: {game.year}, Publisher: {game.publisher}
+              </CardSubtitle>
+              <Button
+                color="primary"
+                size="sm"
                 onClick={() => {
                   displayGameData(game);
                 }}
               >
                 View Game Data
               </Button>
-              
-              {/* <li>{game.rank}</li>
-              <li>{game.year}</li>
-              <li>{game.genre}</li>
-              <li>{game.publisher}</li>
-              <li>{game.northAmericaSales}</li>
-              <li>{game.europeSales}</li>
-              <li>{game.japanSales}</li>
-              <li>{game.otherSales}</li>
-              <li>{game.globalSales}</li> */}
-
-            </CardBody>
-          </>
+            </Card>
+          </div>
         );
       })}
-      {toggle ? <>
-                <Chart
-                  chartType="ColumnChart"
-                  width="100%"
-                  height="400px"
-                  data={chartData}
-                />
-              </> : <p>Search game for results</p>}
-      
+      {toggle ? (
+        <>
+          <Chart
+            chartType="ColumnChart"
+            width="100%"
+            height="400px"
+            data={chartData}
+          />
+        </>
+      ) : (
+        <p>Search game for results</p>
+      )}
     </div>
   );
 };
