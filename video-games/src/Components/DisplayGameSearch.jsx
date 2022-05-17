@@ -9,7 +9,7 @@ const DisplayGameSearch = props => {
 
 
   function displayGameData(selectedGame) {
-    console.log(selectedGame);
+    // console.log(selectedGame);
     let newSelectedGame = props.gameSearch.filter(
       game => game.name.toLowerCase() === selectedGame.name.toLowerCase()
     );
@@ -23,7 +23,7 @@ const DisplayGameSearch = props => {
       let allGamesForPlatform = newSelectedGame.filter(
         game => game.platform === platform
       );
-      console.log(allGamesForPlatform)
+      // console.log(allGamesForPlatform)
       
       for (let i = 0; i < allGamesForPlatform.length; i++){
           sum = 0;
@@ -36,7 +36,7 @@ const DisplayGameSearch = props => {
       ["Platform", "Number of copies", { role: "style" }],
       ...platformArrays,
     ];
-    console.log(data);
+    // console.log(data);
     setToggle(true)
     setChartData(data)
     return data;

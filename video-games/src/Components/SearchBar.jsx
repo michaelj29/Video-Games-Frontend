@@ -12,7 +12,7 @@ const SearchBar = (props) => {
   function onChange(e) {
     let newValue = e.target.value;
     setSearch(newValue);
-    console.log(newValue);
+    // console.log(newValue);
   }
 
   return (

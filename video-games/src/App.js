@@ -2,6 +2,7 @@ import VideoGameChart from "./Components/VideoGameChart";
 import Header from "./Components/Header";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import EvaluationChart from "./Components/EvaluationChart";
 
 import DisplayGameSearch  from "./Components/DisplayGameSearch";
 
@@ -21,7 +22,7 @@ function App() {
       // console.log("This is our axios call", response.data);
       setVideoGames(response.data);
     } catch (err) {
-      console.log("Error in getAllVideoGames function.");
+      // console.log("Error in getAllVideoGames function.");
     }
   }
 
@@ -33,6 +34,7 @@ function App() {
   return (
     <div>
       <Header search={searchVideoGames}/>
+      <EvaluationChart videoGames={videoGames}/>
       <DisplayGameSearch gameSearch={gameSearch}/>
       <VideoGameChart videoGames={videoGames} />
       {/* <DisplayGames games={videoGames} /> */}

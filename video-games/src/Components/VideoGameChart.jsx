@@ -17,14 +17,14 @@ const VideoGameChart = ({ videoGames }) => {
         game => game.platform === platform
       );
       for (let i = 0; i < allGamesForPlatform.length; i++){
-        console.log(allGamesForPlatform[i].globalSales)
+        // console.log(allGamesForPlatform[i].globalSales)
           sum += allGamesForPlatform[i].globalSales;
         }
         return [platform, sum, "red"];
   });
 
     const data = [
-      ["Platform", "Sales", { role: "style" }],
+      ["Platform", "Sales in Millions", { role: "style" }],
       ...platformArrays,
     ];
     return data;
