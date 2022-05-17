@@ -17,7 +17,7 @@ span {
 
 .title h4{
     text-align: center;
-    text-shadow: .5px .5px .5px red, 0 0 1em rgba(0, 0, 0, 0.318), 0 0 0.1em blue;
+    text-shadow: .5px .5px .5px rgba(255, 0, 0, 0.469), 0 0 1em rgba(120, 163, 160, 0.158), 0 0 0.1em rgb(0, 0, 0);
 }
 .header{
     margin-left:20px;
